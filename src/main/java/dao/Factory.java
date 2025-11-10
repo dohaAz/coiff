@@ -13,7 +13,7 @@ import java.util.Properties;
 public class Factory {
 
 	
-	private static final String FICHIER_PROPERTIES       = "/com/JAVA/dao/dao.properties";
+	private static final String FICHIER_PROPERTIES       = "dao.properties";
     private static final String PROPERTY_URL             = "url";
     private static final String PROPERTY_DRIVER          = "driver";
     private static final String PROPERTY_NOM_UTILISATEUR = "nomutilisateur";
@@ -24,9 +24,9 @@ public class Factory {
     private static String              password;
 
     Factory( String url, String username, String password ) {
-        this.url = url;
-        this.username = username;
-        this.password = password;
+        Factory.url = url;
+        Factory.username = username;
+        Factory.password = password;
     }
 
     /*
