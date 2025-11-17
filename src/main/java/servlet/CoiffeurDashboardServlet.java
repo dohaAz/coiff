@@ -52,18 +52,12 @@ public class CoiffeurDashboardServlet extends HttpServlet {
 	        try (Connection conn = Factory.getConnection()) { // connexion via Factory
 	            RendezVousDao rdvDao = new RendezVousDaoImpl(conn);
 	            CoiffeurDaoImpl coiffDao = new CoiffeurDaoImpl(conn);
-
+ 
 	            List<RendezVous> rdvs = rdvDao.getRendezVousByCoiffeur(coiffeurId);
 	            Coiffeur coiffeur = coiffDao.getCoiffeurById(coiffeurId);
 
 	            request.setAttribute("rdvs", rdvs);
 	            request.setAttribute("coiffeur", coiffeur);
-
-	            System.out.println(" [SERVLET] CoiffeurDashboardServlet CALLED");
-	            System.out.println("user trouvé dans session : ID=" + user.getId() + " | role=" + user.getRole());
-	            System.out.println("ID Coiffeur récupéré = " + coiffeurId);
-	            System.out.println("Coiffeur trouvé : " + (coiffeur != null ? coiffeur.getNom() : "NULL"));
-	            System.out.println("RDV récupérés = " + rdvs.size());
 
 	            request.getRequestDispatcher("/coiffeur/dashboard.jsp").forward(request, response);
 
