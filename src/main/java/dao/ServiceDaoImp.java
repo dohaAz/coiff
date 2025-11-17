@@ -7,6 +7,12 @@ import java.util.List;
 import model.Service;
 
 public class ServiceDaoImp implements ServiceDao {
+	
+	private Connection conn;
+
+	public ServiceDaoImp(Connection conn) {
+        this.conn = conn;
+    }
 
     @Override
     public List<Service> getAllServices() {

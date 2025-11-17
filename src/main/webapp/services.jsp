@@ -3,11 +3,12 @@
 <%@ page import="model.Service" %>
 <%@ page import="dao.ServiceDaoImp" %>
 <%@ page import="java.util.List" %>
-
+<%@ page import="dao.Factory" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 
 <% // Récupérer la liste des services
-ServiceDaoImp serviceDao = new ServiceDaoImp();
+ServiceDaoImp serviceDao = new ServiceDaoImp(new Connection());
 List<Service> services = serviceDao.getAllServices();
 %>
 <!DOCTYPE html>
@@ -48,24 +49,13 @@ List<Service> services = serviceDao.getAllServices();
                     <h2 class="card-title">Nos services disponibles</h2>
                 </div>
                 <div class="services-grid">
-                    <% for(Service service : services) { %>
-                    <div class="service-card">
-                        <img src="<%= service.getPhoto() %>" alt="image service" style="width:120px;border-radius:10px;">
-                        
-                        <h3 class="service-name"><%= service.getNom() %></h3>
-                        <p class="service-duration">
-                            <i class="fas fa-clock"></i> <%= service.getDuree() %> minutes
-                        </p>
-                        <div class="service-price"><%= service.getPrix() %> €</div>
-                        <p style="color: var(--medium-brown); font-size: 14px; margin-bottom: 15px;">
-                            <%= service.getDescription() %>
-                        </p>
-                        <a href="reservation.jsp?serviceId=<%= service.getId() %>" class="btn btn-primary">
-                            <i class="fas fa-calendar-check"></i> Réserver
-                        </a>
-                    </div>
-                    <% System.out.println("Services lus : " + services.size());
-                    } %>
+                    <c:forEach var="s" items="${services}">
+    <tr>
+        <td>${s.id}</td>
+        <td>${s.nom}</td>
+        <td>${s.prix}</td>
+    </tr>
+</c:forEach>
                 </div>
             </div>
             </div>

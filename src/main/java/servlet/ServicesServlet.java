@@ -37,7 +37,7 @@ public class ServicesServlet extends HttpServlet {
 		
 		
 		 try {
-	            ServiceDaoImp dao = new ServiceDaoImp();
+	            ServiceDaoImp dao = new ServiceDaoImp(Factory.getConnection());
 	            List<Service> services = dao.getAllServices();
 
 	            request.setAttribute("services", services);

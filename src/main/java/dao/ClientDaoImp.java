@@ -10,6 +10,8 @@ import model.Client;
 public class ClientDaoImp implements ClientDao {
 	
 	
+	
+	
 	public boolean ajouterClient(Client client) {
         boolean success = false;
         String sql = "INSERT INTO client (prenom, nom, email, telephone, mot_de_passe) VALUES (?, ?, ?, ?, ?)";

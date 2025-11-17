@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="model.User" %>
-<<<<<<< HEAD
+
 <%@ page import="model.Client" %>
 <%@ page import="dao.ClientDaoImp" %>
 <%@ page import="java.util.List" %>
 <%@ page import="model.Service" %>
 <%@ page import="dao.ServiceDaoImp" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%
     User user = (User) session.getAttribute("user");
@@ -20,13 +21,12 @@
     
     
 %>
-=======
->>>>>>> 2892b5ab0a89df4c7d8078003cb7f72e1d4378b2
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<<<<<<< HEAD
+
 <title>Tableau de Bord - Coiffure Élégance</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/dashboard.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">

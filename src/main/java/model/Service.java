@@ -19,14 +19,7 @@ public class Service {
         this.photo = photo; 
     }
 
-    public Service(String nom, String description, int duree, double prix) {
-        this.nom = nom;
-        this.description = description;
-        this.duree = duree;
-        this.prix = prix;
-        this.photo = photo; 
 
-    }
 
     public int getId() { return id; }
     public String getNom() { return nom; }
