@@ -357,6 +357,7 @@
                                                     <div class="action-buttons">
                                                         <form method="post" style="display:inline">
                                                             <input type="hidden" name="idRdv" value="${rdv.idRdv}"/>
+                                                            <input type="hidden" name="idClient" value="${rdv.idClient}">
                                                             <button type="submit" name="action" value="confirme" class="btn btn-confirm">
                                                                 Confirmer
                                                             </button>

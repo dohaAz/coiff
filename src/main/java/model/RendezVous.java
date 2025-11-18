@@ -31,7 +31,7 @@ public class RendezVous {
 	        this.prenomClient = prenomClient;
 	        this.idService = idService;
 	        this.nomService = nomService;
-	        this.prix = prix;
+	        this.prix = prix; 
 	    }
 
 	    // Getters et setters

@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,6 +16,8 @@ import dao.CoiffeurDaoImpl;
 import dao.RendezVousDao;
 import dao.RendezVousDaoImpl;
 import dao.Factory;
+import dao.FideliteDao;
+import dao.FideliteDaoImpl;
 
 import java.sql.Connection;
 import java.util.List;
@@ -89,6 +92,11 @@ public class CoiffeurDashboardServlet extends HttpServlet {
             switch(action) {
                 case "confirme":
                     rdvDao.confirmerRdv(idRdv);
+                    
+                    FideliteDao fDao = new FideliteDaoImpl(conn);
+                    int idClient = Integer.parseInt(request.getParameter("idClient"));
+                    fDao.ajouterPoints(idClient, 10);
+                    
                     break;
                 case "annule":
                     rdvDao.annulerRdv(idRdv);
