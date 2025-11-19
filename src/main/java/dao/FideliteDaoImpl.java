@@ -15,7 +15,7 @@ public class FideliteDaoImpl implements FideliteDao {
     @Override
     public void ajouterPoints(int idClient, int points) throws Exception {
 
-        // 1️⃣ Vérifier si le client a déjà une ligne dans fidélité
+        //Vérifier si le client a déjà une ligne dans fidélité
         String checkSql = "SELECT COUNT(*) FROM fidelite WHERE id_client = ?";
         PreparedStatement check = conn.prepareStatement(checkSql);
         check.setInt(1, idClient);
@@ -24,7 +24,7 @@ public class FideliteDaoImpl implements FideliteDao {
         boolean exists = rs.getInt(1) > 0;
 
         if (!exists) {
-            // 2️⃣ Si pas d'entrée → créer la ligne
+            // Si pas d'entrée → créer la ligne
             String insertSql = "INSERT INTO fidelite (id_client, points, reduction_applicable, source, date_operation, description) " +
                                "VALUES (?, ?, FALSE, 'rendezvous', NOW(), 'Création du compte fidélité')";
             PreparedStatement insert = conn.prepareStatement(insertSql);
@@ -34,7 +34,7 @@ public class FideliteDaoImpl implements FideliteDao {
             return;
         }
 
-        // 3️⃣ Sinon : mise à jour
+        //Sinon : mise à jour
         String sql = "UPDATE fidelite SET points = points + ?, date_operation = NOW(), " +
                      "source='rendezvous', description='Points ajoutés après confirmation' " +
                      "WHERE id_client = ?";
@@ -43,7 +43,7 @@ public class FideliteDaoImpl implements FideliteDao {
         ps.setInt(2, idClient);
         ps.executeUpdate();
 
-        // 4️⃣ Vérifier si le client a atteint 100 points
+        //Vérifier si le client a atteint 100 points
         int totalPoints = getPoints(idClient);
         if (totalPoints >= 100) {
             String sql2 = "UPDATE fidelite SET reduction_applicable = TRUE WHERE id_client = ?";
