@@ -258,7 +258,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="${pageContext.request.contextPath}/admin/clients">
+                    <a href="${pageContext.request.contextPath}/admin/clients" class="active">
                         Gestion des Clients
                     </a>
                 </li>

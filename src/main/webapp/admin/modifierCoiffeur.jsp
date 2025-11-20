@@ -263,7 +263,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="${pageContext.request.contextPath}/admin/coiffeurs">
+                    <a href="${pageContext.request.contextPath}/admin/coiffeurs" class="active">
                         Gestion des Coiffeurs
                     </a>
                 </li>

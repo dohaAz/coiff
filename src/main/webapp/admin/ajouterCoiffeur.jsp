@@ -45,7 +45,7 @@
         
         .sidebar-header {
             padding: 30px 20px;
-            background: var(--burgundy);
+            background: var(--dark-brown);
             text-align: center;
             border-bottom: 2px solid var(--medium-brown);
         }
@@ -283,7 +283,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="${pageContext.request.contextPath}/admin/coiffeurs">
+                    <a href="${pageContext.request.contextPath}/admin/coiffeurs" class="active">
                         Gestion des Coiffeurs
                     </a>
                 </li>
