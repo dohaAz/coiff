@@ -14,7 +14,7 @@ public class CoiffeurDaoImpl implements CoiffeurDao {
 	 private Connection conn;
 
 	    public CoiffeurDaoImpl(Connection conn) {
-	        this.conn = conn;
+	        this.conn = conn; 
 	    }
 	    
 	    @Override
