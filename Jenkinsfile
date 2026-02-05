@@ -17,7 +17,7 @@ pipeline {
 
         stage('Build & Test with Coverage') {
             steps {
-                echo 'mvn clean verify'
+                bat 'mvn clean verify'
             }
         }
 
@@ -27,7 +27,7 @@ pipeline {
             }
             steps {
                 withSonarQubeEnv('SonarQube Local') {
-                    echo """
+                    bat """
                         mvn sonar:sonar ^
                         -Dsonar.projectKey=coiff ^
                         -Dsonar.projectName="coiff" ^
