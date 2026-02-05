@@ -23,15 +23,14 @@ pipeline {
 
         stage('SonarQube Analysis') {
             environment {
-                SONAR_TOKEN = credentials('sonar-token-id')
+                SONAR_TOKEN = credentials('sonar-token')
             }
             steps {
                 withSonarQubeEnv('SonarQube Local') {
                     bat """
                         mvn sonar:sonar ^
-                        -Dsonar.projectKey=cargo-tracker ^
-                        -Dsonar.projectName="Cargo Tracker" ^
-                        -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml ^
+                        -Dsonar.projectKey=coiff ^
+                        -Dsonar.projectName="coiff" ^
                         -Dsonar.host.url=http://localhost:9000 ^
                         -Dsonar.token=%SONAR_TOKEN%
                     """
