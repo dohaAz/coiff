@@ -22,18 +22,11 @@ pipeline {
         }
 
         stage('SonarQube Analysis') {
-            environment {
-                SONAR_TOKEN = credentials('sonar-token')
-            }
             steps {
-                withSonarQubeEnv('SonarQube Local') {
-                    bat """
+                withSonarQubeEnv('SonarQube') {
+                    bat "
                         mvn sonar:sonar ^
-                        -Dsonar.projectKey=coiff ^
-                        -Dsonar.projectName="coiff" ^
-                        -Dsonar.host.url=http://localhost:9000 ^
-                        -Dsonar.token=%SONAR_TOKEN%
-                    """
+                    "                
                 }
             }
         }
