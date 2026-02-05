@@ -26,7 +26,7 @@ pipeline {
                 SONAR_TOKEN = credentials('sonar-token')
             }
             steps {
-                withSonarQubeEnv('SonarQube Local') {
+                withSonarQubeEnv('SonarQube') {
                     bat """
                         mvn sonar:sonar ^
                         -Dsonar.projectKey=coiff ^
