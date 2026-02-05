@@ -27,7 +27,7 @@ pipeline {
             }
             steps {
                 withSonarQubeEnv('SonarQube Local') {
-                    bat """
+                    echo """
                         mvn sonar:sonar ^
                         -Dsonar.projectKey=coiff ^
                         -Dsonar.projectName="coiff" ^
