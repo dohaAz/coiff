@@ -31,7 +31,7 @@ pipeline {
             steps {
                 withSonarQubeEnv('SonarQube') {
                     bat """
-                        mvn sonar:sonar ^
+                        mvn clean verify sonar:sonar ^
                         -Dsonar.projectKey=coiff ^
                         -Dsonar.projectName="coiff" ^
                         -Dsonar.host.url=http://localhost:9000 ^
