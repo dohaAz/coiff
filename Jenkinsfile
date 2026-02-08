@@ -37,6 +37,9 @@ pipeline {
                         -Dsonar.projectName="coiff" ^
                         -Dsonar.host.url=http://localhost:9000 ^
                         -Dsonar.token=%SONAR_TOKEN%
+                        -Dsonar.junit.reportPaths=target/surefire-reports \
+                        -Dsonar.java.coveragePlugin=jacoco \
+                        -Dsonar.jacoco.reportPaths=target/jacoco.exec
                     """
                 }
             }
