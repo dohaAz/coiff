@@ -1,7 +1,8 @@
 pipeline {
     agent any
     tools {
-    maven 'Maven3'
+        jdk 'JDK11'
+        maven 'Maven3'
     }
     
     triggers {
@@ -20,7 +21,7 @@ pipeline {
 
         stage('Build & Test with Coverage') {
             steps {
-                echo 'mvn clean verify'
+                bat 'mvn clean verify -B -V'
             }
         }
 
