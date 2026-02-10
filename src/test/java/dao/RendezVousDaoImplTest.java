@@ -18,13 +18,8 @@ class RendezVousDaoImplTest {
     private ResultSet rs;
     private RendezVousDaoImpl rdvDao;
 
-    @BeforeEach
-    void setup() throws Exception {
-        conn = mock(Connection.class);
-        ps = mock(PreparedStatement.class);
-        rs = mock(ResultSet.class);
-        rdvDao = new RendezVousDaoImpl(conn);
-    }
+
+
 
     @Test
     void testGetRendezVousByCoiffeur() throws Exception {
