@@ -23,5 +23,19 @@ class CoiffeurDashboardServletTest {
 
         verify(response).sendRedirect(contains("login"));
     }
+    @Test
+void testDoGetRedirectIfNotLoggedIn() throws Exception {
+    HttpServletRequest req = mock(HttpServletRequest.class);
+    HttpServletResponse resp = mock(HttpServletResponse.class);
+    HttpSession session = mock(HttpSession.class);
+
+    when(req.getSession()).thenReturn(session);
+    when(session.getAttribute("user")).thenReturn(null);
+
+    new CoiffeurDashboardServlet().doGet(req, resp);
+
+    verify(resp).sendRedirect(anyString());
+}
+
 }
 

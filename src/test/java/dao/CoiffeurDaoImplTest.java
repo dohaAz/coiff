@@ -74,4 +74,31 @@ class CoiffeurDaoImplTest {
 
         assertEquals(5, dao.countCoiffeurs());
     }
+
+    @Test
+    void testGetAll() throws Exception {
+        when(conn.prepareStatement(anyString())).thenReturn(ps);
+        when(ps.executeQuery()).thenReturn(rs);
+        when(rs.next()).thenReturn(true, true, false); // 2 coiffeurs
+        when(rs.getInt("id_coiffeur")).thenReturn(1, 2);
+    when(rs.getString("nom")).thenReturn("Ali","Sara");
+
+    assertEquals(2, dao.getAll().size());
+}
+
+@Test
+void testUpdateCoiffeur() throws Exception {
+    when(conn.prepareStatement(anyString())).thenReturn(ps);
+    when(ps.executeUpdate()).thenReturn(1);
+
+    Coiffeur c = new Coiffeur();
+    c.setIdCoiffeur(1);
+    c.setNom("Updated");
+    c.setAdresse("New Address");
+    c.setEmail("new@mail.com");
+    c.setTelephone("060000");
+
+    assertTrue(dao.update(c));
+}
+
 }
