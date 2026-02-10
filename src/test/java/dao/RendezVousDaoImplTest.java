@@ -19,17 +19,12 @@ class RendezVousDaoImplTest {
     private RendezVousDaoImpl rdvDao;
 
     @BeforeEach
-void setup() {
-    try {
+    void setup() {
         conn = mock(Connection.class);
         ps = mock(PreparedStatement.class);
         rs = mock(ResultSet.class);
         rdvDao = new RendezVousDaoImpl(conn);
-    } catch (Exception e) {
-        fail("Erreur lors du setup: " + e.getMessage());
     }
-}
-
 
     @Test
     void testGetRendezVousByCoiffeur() throws Exception {
