@@ -17,14 +17,18 @@ class CoiffeurDaoImplTest {
     private ResultSet rs;
     private CoiffeurDaoImpl dao;
 
-    @BeforeEach
-    void setup() throws Exception {
+   @BeforeEach
+void setup() {
+    try {
         conn = mock(Connection.class);
         ps = mock(PreparedStatement.class);
         rs = mock(ResultSet.class);
-
         dao = new CoiffeurDaoImpl(conn);
+    } catch (Exception e) {
+        fail("Erreur lors du setup: " + e.getMessage());
     }
+}
+
 
     @Test
     void testGetCoiffeurById() throws Exception {
