@@ -26,24 +26,22 @@ pipeline {
         }
 
         stage('SonarQube Analysis') {
-            environment {
-                SONAR_TOKEN = credentials('sonar-token')
-            }
-            steps {
-                withSonarQubeEnv('SonarQube') {
-                    bat """
-                        mvn clean verify sonar:sonar ^
-                        -Dsonar.projectKey=coiff ^
-                        -Dsonar.projectName="coiff" ^
-                        -Dsonar.host.url=http://localhost:9000 ^
-                        -Dsonar.token=%SONAR_TOKEN%
-                        -Dsonar.junit.reportPaths=target/surefire-reports \
-                        -Dsonar.java.coveragePlugin=jacoco \
-                        -Dsonar.jacoco.reportPaths=target/jacoco.exec
-                    """
-                }
-            }
+    environment {
+        SONAR_TOKEN = credentials('sonar-token')
+    }
+    steps {
+        withSonarQubeEnv('SonarQube') {
+            bat """
+            mvn clean verify sonar:sonar ^
+            -Dsonar.projectKey=coiff ^
+            -Dsonar.projectName=coiff ^
+            -Dsonar.host.url=http://localhost:9000 ^
+            -Dsonar.token=%SONAR_TOKEN% ^
+            -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
+            """
         }
+    }
+}
     }
 //
     post {
