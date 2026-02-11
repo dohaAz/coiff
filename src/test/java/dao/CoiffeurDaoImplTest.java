@@ -101,4 +101,51 @@ void testUpdateCoiffeur() throws Exception {
     assertTrue(dao.update(c));
 }
 
+@Test
+void testGetAllEmpty() throws Exception {
+    when(conn.prepareStatement(anyString())).thenReturn(ps);
+    when(ps.executeQuery()).thenReturn(rs);
+    when(rs.next()).thenReturn(false); // aucune ligne dans ResultSet
+
+    assertEquals(0, dao.getAll().size());
+}
+
+@Test
+void testGetCoiffeurByIdNotFound() throws Exception {
+    when(conn.prepareStatement(anyString())).thenReturn(ps);
+    when(ps.executeQuery()).thenReturn(rs);
+    when(rs.next()).thenReturn(false); // coiffeur non trouvé
+
+    Coiffeur c = dao.getCoiffeurById(99);
+    assertNull(c);
+}
+
+@Test
+void testAddCoiffeurFails() throws Exception {
+    when(conn.prepareStatement(anyString())).thenReturn(ps);
+    when(ps.executeUpdate()).thenThrow(new SQLException("DB error"));
+
+    Coiffeur c = new Coiffeur();
+    assertFalse(dao.add(c)); // devrait retourner false en cas d'exception
+}
+
+@Test
+void testDeleteCoiffeurFails() throws Exception {
+    when(conn.prepareStatement(anyString())).thenReturn(ps);
+    when(ps.executeUpdate()).thenThrow(new SQLException("DB error"));
+
+    assertFalse(dao.delete(1));
+}
+
+@Test
+void testUpdateCoiffeurFails() throws Exception {
+    when(conn.prepareStatement(anyString())).thenReturn(ps);
+    when(ps.executeUpdate()).thenThrow(new SQLException("DB error"));
+
+    Coiffeur c = new Coiffeur();
+    c.setIdCoiffeur(1);
+    assertFalse(dao.update(c));
+}
+
+
 }
