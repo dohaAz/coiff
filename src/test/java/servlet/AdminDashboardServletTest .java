@@ -1,7 +1,6 @@
 package servlet;
 
 import static org.mockito.Mockito.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.sql.Connection;
 
