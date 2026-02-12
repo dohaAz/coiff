@@ -11,7 +11,7 @@ import model.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class AdminFideliteServletTest {
+class AdminFideliteServletTest {
 
     private AdminFideliteServlet servlet;
     private HttpServletRequest request;
@@ -20,7 +20,7 @@ public class AdminFideliteServletTest {
     private RequestDispatcher dispatcher;
 
     @BeforeEach
-    void setUp() {
+    void setup() {
         servlet = new AdminFideliteServlet();
         request = mock(HttpServletRequest.class);
         response = mock(HttpServletResponse.class);
@@ -31,7 +31,7 @@ public class AdminFideliteServletTest {
     }
 
     @Test
-    void doitRedirigerVersLoginSiUtilisateurNonConnecte() throws Exception {
+    void redirectionLoginSiUtilisateurNull() throws Exception {
         when(session.getAttribute("user")).thenReturn(null);
 
         servlet.doGet(request, response);
@@ -40,7 +40,7 @@ public class AdminFideliteServletTest {
     }
 
     @Test
-    void doitRedirigerVersLoginSiUtilisateurNonAdmin() throws Exception {
+    void redirectionLoginSiUtilisateurNonAdmin() throws Exception {
         User user = new User();
         user.setRole("coiffeur");
 
@@ -52,7 +52,7 @@ public class AdminFideliteServletTest {
     }
 
     @Test
-    void doitForwardVersJspSiUtilisateurAdmin() throws Exception {
+    void forwardVersJspSiUtilisateurAdmin() throws Exception {
         User user = new User();
         user.setRole("admin");
 
